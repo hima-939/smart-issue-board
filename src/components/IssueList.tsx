@@ -3,7 +3,6 @@ import { getIssues, updateIssueStatus } from '../services/issueService';
 import { Issue, Priority, Status } from '../types/issue';
 
 export const IssueList = () => {
-  const [issues, setIssues] = useState<Issue[]>([]);
   const [filteredIssues, setFilteredIssues] = useState<Issue[]>([]);
   const [statusFilter, setStatusFilter] = useState<Status | ''>('');
   const [priorityFilter, setPriorityFilter] = useState<Priority | ''>('');
@@ -20,7 +19,6 @@ export const IssueList = () => {
         statusFilter || undefined,
         priorityFilter || undefined
       );
-      setIssues(data);
       setFilteredIssues(data);
     } catch (err: any) {
       setError(err.message || 'Failed to load issues');
